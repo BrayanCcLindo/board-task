@@ -6,7 +6,7 @@ import { PenLine, X } from "lucide-react";
 import { useState } from "react";
 // import EditarCardForm from "../components/edit-card-form";
 import { CardType } from "../api/type";
-import EditarCardForm from "@/components/edit-card-form";
+import EditarCardForm from "../components/edit-card-form";
 
 export type InputValueType = {
   title: string;

@@ -7,9 +7,14 @@ import {
   FormEvent,
   useEffect,
 } from "react";
-import { todos } from "../app/api/api";
 import { CardType, TrelloContextType } from "./api/type";
-import { Inputs } from "@/components/edit-card-form";
+import { todos } from "./api/api";
+import { Inputs } from "./components/edit-card-form";
+// import { todos } from "../app/api/api";
+// import { CardType, TrelloContextType } from "./api/type";
+// import { Inputs } from "@/components/edit-card-form";
+// import { CardType, TrelloContextType } from "@/api/type";
+// import { todos } from "@/api/api";
 // import { Inputs } from "./components/edit-card-form";
 
 export const TrelloContext = createContext<TrelloContextType>(

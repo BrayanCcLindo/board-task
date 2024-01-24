@@ -3,9 +3,10 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X, User } from "lucide-react";
 import { useState } from "react";
-import { useTrelloContext } from "../trelloContext";
+// import { useTrelloContext } from "../trelloContext";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
+import { useTrelloContext } from "@/app/trelloContext";
 
 export type Profile = {
   nombre: string;

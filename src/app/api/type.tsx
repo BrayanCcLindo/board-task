@@ -1,5 +1,5 @@
-import { Inputs } from "@/components/edit-card-form";
 import { FormEvent } from "react";
+import { Inputs } from "../components/edit-card-form";
 // import { Inputs } from "../components/edit-card-form";
 
 type ComenntsType = {
