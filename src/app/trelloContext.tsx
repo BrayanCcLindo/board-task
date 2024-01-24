@@ -117,12 +117,6 @@ const reducer = (state: any, action: any) => {
   }
 };
 
-// let initialValue: any;
-// if (typeof window !== "undefined") {
-//   const storedValue = localStorage.getItem("card");
-//   initialValue = storedValue ? JSON.parse(storedValue) : todos;
-// }
-
 let initialProfile: any;
 if (typeof window !== "undefined") {
   const storedUser = localStorage.getItem("user");
@@ -131,7 +125,7 @@ if (typeof window !== "undefined") {
     ? JSON.parse(storedUser)
     : {
         nombre: "",
-        foto: "/profiles-main.jpg",
+        foto: "/cat-user.jpg",
       };
 }
 const profileReduder = (state: any, action: any) => {

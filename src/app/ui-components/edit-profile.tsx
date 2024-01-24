@@ -42,7 +42,7 @@ function EditProfile({ name }: { name: string }) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:bg-black/30 fixed inset-0" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-[#253452] p-[25px] text-white ">
+        <Dialog.Content className=" fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-[#253452] p-[25px] text-white ">
           <Dialog.Title className=" m-0 text-xl font-semibold">
             Inicia Sesión
           </Dialog.Title>
@@ -105,6 +105,7 @@ function EditProfile({ name }: { name: string }) {
             )}
             {image ? (
               <Image
+                className="rounded-full"
                 src={image}
                 alt="profile-photo"
                 width={100}

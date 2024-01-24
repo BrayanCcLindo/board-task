@@ -33,6 +33,8 @@ function Board() {
     event.preventDefault();
   };
 
+  console.log(stateProfile, "stateProfile");
+
   const id = "to-do";
   const {
     register,
@@ -46,10 +48,9 @@ function Board() {
       <div className="flex justify-between items-center">
         <div className="flex gap-4 items-center ">
           <h1 className="font-bold py-4  text-white md:text-2xl">
-            {!stateProfile
-              ? " ¡Bienvenido!"
-              : ` ¡Bienvenido ${stateProfile.nombre}!`}
+            ¡Bienvenido {stateProfile?.nombre}!
           </h1>
+
           <Image
             className="rounded-full h-[40px] w-[40px] md:h-[60px] md:w-[60px] object-cover"
             src={stateProfile?.foto}
@@ -62,16 +63,16 @@ function Board() {
       </div>
       <main
         className={
-          "block whitespace-nowrap overflow-auto  scroll-smooth md:flex md:flex-1 md:gap-4"
+          "block whitespace-nowrap overflow-auto  scroll-smooth md:flex flex-1 md:gap-4"
         }
       >
         <div
           onDrop={(evt) => completedDrag(evt, "to-do")}
           onDragOver={(e) => draggingOver(e)}
           id="todo"
-          className=" bg-[#253452]  w-full h-full inline-block p-4 rounded-lg flex-1 relative overflow-hidden"
+          className=" bg-[#253452]  w-full h-full inline-block  p-4 rounded-lg flex-1  relative "
         >
-          <div className=" flex-1 w-full flex flex-col gap-6 absolute inset-0 overflow-auto p-4">
+          <div className="flex flex-1 w-full   flex-col gap-6 absolute inset-0 overflow-auto p-4">
             <h2 className=" font-semibold text-white text-xl">
               Actividades por hacer
             </h2>
