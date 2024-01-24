@@ -33,8 +33,6 @@ function Board() {
     event.preventDefault();
   };
 
-  console.log(stateProfile, "stateProfile");
-
   const id = "to-do";
   const {
     register,
