@@ -16,18 +16,9 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.custom-flex {
+  @apply flex gap-4 items-center justify-center;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.custom-flex-between {
+  @apply flex justify-between items-center;
 }
