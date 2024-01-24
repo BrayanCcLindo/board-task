@@ -46,7 +46,7 @@ function Board() {
       <div className="flex justify-between items-center">
         <div className="flex gap-4 items-center ">
           <h1 className="font-bold py-4  text-white md:text-2xl">
-            ¡Bienvenido {stateProfile?.nombre}!
+            ¡Bienvenid@ {stateProfile?.nombre}!
           </h1>
 
           <Image
