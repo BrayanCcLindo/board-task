@@ -9,7 +9,7 @@ export const todos = [
     id: Date.now(),
     list: "to-do",
     user: {
-      name: "Brayan",
+      name: "",
       avatar: "../../../profiles-main.jpg",
     },
     date: formatDate,

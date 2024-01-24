@@ -26,7 +26,7 @@ function EditarCardForm({
     formState: { errors },
   } = useForm<Inputs>();
 
-  const { editCards, deleteCard } = useTrelloContext();
+  const { editCards, deleteCard, stateProfile } = useTrelloContext();
 
   return (
     <div>
@@ -64,7 +64,7 @@ function EditarCardForm({
           aria-invalid={errors.title ? true : false}
           className="p-4 focus:shadow-violet8 inline-flex rounded-lg bg-[#304973]  px-[10px] text-[15px] leading-none "
           id="name"
-          placeholder={todo.user.name}
+          placeholder={stateProfile?.nombre}
         />
         {errors.name && (
           <p className="text-red-500 text-sm font-semibold">
@@ -74,28 +74,28 @@ function EditarCardForm({
         <div className="flex gap-4 justify-end items-center">
           <button
             type="submit"
-            className="bg-[#304973] text-white hover:scale-105 duration-100 focus:scale-110 inline-flex  items-center justify-center rounded-lg px-6 py-4 font-medium"
+            className="bg-[#304973] text-white hover:scale-105 duration-100 focus:scale-110 inline-flex  items-center justify-center rounded-lg px-3 py-2 md:px-6 md:py-4  font-medium"
           >
-            Save
+            Guardar
           </button>
           <button
             onClick={() => {
               setOpen(false);
             }}
             type="button"
-            className="bg-[#adb5bd] text-white hover:scale-105 duration-100 focus:scale-110 inline-flex  items-center justify-center rounded-lg px-6 py-4 font-medium"
+            className="bg-[#adb5bd] text-white hover:scale-105 duration-100 focus:scale-110 inline-flex  items-center justify-center rounded-lg px-3 py-2 md:px-6 md:py-4 font-medium"
           >
-            Cancel
+            Cancelar
           </button>
           <button
             type="button"
-            className="bg-red-500 text-white hover:scale-105 duration-100 focus:scale-110 inline-flex  items-center justify-center rounded-lg px-6 py-4 font-medium"
+            className="bg-red-500 text-white hover:scale-105 duration-100 focus:scale-110 inline-flex  items-center justify-center rounded-lg px-3 py-2 md:px-6 md:py-4 font-medium"
             onClick={() => {
               deleteCard(id);
               setOpen(false);
             }}
           >
-            Delete
+            Eliminar
           </button>
         </div>
       </form>
