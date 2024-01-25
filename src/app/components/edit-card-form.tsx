@@ -3,6 +3,8 @@
 import { useTrelloContext } from "@/app/trelloContext";
 import { useForm } from "react-hook-form";
 import { CardType } from "../api/type";
+import Toastify from "toastify-js";
+
 // import { useTrelloContext } from "../trelloContext";
 // import { CardType } from "../api/type";
 
@@ -34,6 +36,25 @@ function EditarCardForm({
         onSubmit={handleSubmit((inputValue, event: any) => {
           editCards(event, todo, inputValue, id);
           setOpen(false);
+          Toastify({
+            text: "Tarea Actualizada! 🎉",
+            duration: 3000,
+            // destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "#304973",
+              padding: "12px",
+              "border-radius": "1rem",
+              position: "fixed",
+              right: "0",
+              top: "0",
+              color: "#fff",
+            },
+          }).showToast();
         })}
         className="flex flex-col gap-4 text-white"
       >
@@ -93,6 +114,25 @@ function EditarCardForm({
             onClick={() => {
               deleteCard(id);
               setOpen(false);
+              Toastify({
+                text: "¡Adiós, Tarea! 👋",
+                duration: 3000,
+                // destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "#304973",
+                  padding: "12px",
+                  "border-radius": "1rem",
+                  position: "fixed",
+                  right: "0",
+                  top: "0",
+                  color: "#fff",
+                },
+              }).showToast();
             }}
           >
             Eliminar

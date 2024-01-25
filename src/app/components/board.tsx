@@ -13,6 +13,8 @@ import { useTrelloContext } from "@/app/trelloContext";
 import { CardType } from "../api/type";
 import EdiCardDialog from "../ui-components/edit-card-dialog";
 import EditProfile from "../ui-components/edit-profile";
+import JSConfetti from "js-confetti";
+import Toastify from "toastify-js";
 
 export type AddCard = {
   title: string;
@@ -41,6 +43,11 @@ function Board() {
     formState: { errors },
   } = useForm<AddCard>();
 
+  let jsConfetti: any;
+  if (typeof window !== "undefined") {
+    jsConfetti = new JSConfetti();
+  }
+
   return (
     <div className="flex flex-col flex-1 p-4 gap-4">
       <div className="flex justify-between items-center">
@@ -51,7 +58,9 @@ function Board() {
 
           <Image
             className="rounded-full h-[40px] w-[40px] md:h-[60px] md:w-[60px] object-cover"
-            src={stateProfile?.foto}
+            src={
+              stateProfile?.foto === "" ? "/cat-user.jpg" : stateProfile?.foto
+            }
             width={60}
             height={60}
             alt=""
@@ -95,7 +104,11 @@ function Board() {
                       width={30}
                       height={30}
                       alt=""
-                      src={stateProfile?.foto}
+                      src={
+                        stateProfile?.foto === ""
+                          ? "/cat-user.jpg"
+                          : stateProfile?.foto
+                      }
                     ></Image>
                     <p className="flex gap-4 font-semibold text-white">
                       {stateProfile?.nombre}
@@ -131,6 +144,24 @@ function Board() {
                   addNewCard(event, inputValue.title, id);
                   setisFormOpen(false);
                   setValue("title", ""); // ✅
+                  Toastify({
+                    text: "¡Nueva Tarea Agregada! 🚀",
+                    duration: 3000,
+                    // destination: "https://github.com/apvarun/toastify-js",
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                      background: "#304973",
+                      padding: "12px",
+                      "border-radius": "1rem",
+                      position: "fixed",
+                      right: "0",
+                      top: "0",
+                      color: "#fff",
+                    },
+                  }).showToast();
                 })}
                 className="flex flex-col gap-4 mt-4 text-white"
               >
@@ -208,7 +239,11 @@ function Board() {
                       width={30}
                       height={30}
                       alt=""
-                      src={stateProfile?.foto}
+                      src={
+                        stateProfile?.foto === ""
+                          ? "/cat-user.jpg"
+                          : stateProfile?.foto
+                      }
                     ></Image>
                     <p className="flex gap-4 font-semibold text-white">
                       {stateProfile?.nombre}
@@ -223,7 +258,34 @@ function Board() {
           </div>
         </div>
         <div
-          onDrop={(evt) => completedDrag(evt, "done")}
+          onDrop={(evt) => {
+            jsConfetti.addConfetti({
+              emojis: ["🦄", "✨", "🌈"],
+              emojiSize: 20,
+              confettiNumber: 50,
+              confettiRadius: 6,
+            });
+            completedDrag(evt, "done");
+            Toastify({
+              text: `¡Felicidades ${stateProfile?.nombre}! Objetivo Cumplido 🎯`,
+              duration: 5000,
+              // destination: "https://github.com/apvarun/toastify-js",
+              newWindow: true,
+              close: true,
+              gravity: "top", // `top` or `bottom`
+              position: "right", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              style: {
+                background: "#304973",
+                padding: "12px",
+                "border-radius": "1rem",
+                position: "fixed",
+                right: "0",
+                top: "0",
+                color: "#fff",
+              },
+            }).showToast();
+          }}
           onDragOver={(e) => draggingOver(e)}
           className="  bg-[#253452]  relative p-4 rounded-lg flex-1 inline-block  w-full h-full "
           id="done"
@@ -254,7 +316,11 @@ function Board() {
                       width={30}
                       height={30}
                       alt=""
-                      src={stateProfile?.foto}
+                      src={
+                        stateProfile?.foto === ""
+                          ? "/cat-user.jpg"
+                          : stateProfile?.foto
+                      }
                     ></Image>
                     <p className="flex gap-4 font-semibold text-white">
                       {stateProfile?.nombre}

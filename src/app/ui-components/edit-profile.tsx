@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { useTrelloContext } from "@/app/trelloContext";
+import Toastify from "toastify-js";
 
 export type Profile = {
   nombre: string;
@@ -21,6 +22,7 @@ function EditProfile({ name }: { name: string }) {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<Profile>();
 
@@ -57,6 +59,27 @@ function EditProfile({ name }: { name: string }) {
               event?.preventDefault();
               handleProfile(nombre, image);
               setOpen(false);
+              setValue("nombre", "");
+
+              Toastify({
+                text: `¡Bienvenid@ a Bordo! 🚀`,
+                duration: 3000,
+                // destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "#304973",
+                  padding: "12px",
+                  "border-radius": "1rem",
+                  position: "fixed",
+                  right: "0",
+                  top: "0",
+                  color: "#fff",
+                },
+              }).showToast();
             })}
           >
             <label className="text-base font-semibold" htmlFor="name">
@@ -81,7 +104,7 @@ function EditProfile({ name }: { name: string }) {
             </label>
             <input
               {...register("foto", {
-                required: "Tu foto es importante",
+                // required: "Tu foto es importante",
                 onChange: (event) => {
                   const mainImage = event.target.files[0];
 
@@ -95,14 +118,15 @@ function EditProfile({ name }: { name: string }) {
                 },
               })}
               type="file"
+              accept=".png, .jpg, .jpeg"
               className="p-4  inline-flex rounded-lg   px-[10px] text-[15px] leading-none "
               id="image"
             />
-            {errors.foto && (
+            {/* {errors.foto && (
               <p className="text-red-500 text-sm font-semibold">
                 {errors.foto.message}
               </p>
-            )}
+            )} */}
             {image ? (
               <Image
                 className="rounded-full"
