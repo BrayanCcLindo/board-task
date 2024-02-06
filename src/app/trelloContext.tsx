@@ -125,7 +125,7 @@ if (typeof window !== "undefined") {
     ? JSON.parse(storedUser)
     : {
         nombre: "",
-        foto: "/cat-user.jpg",
+        foto: "/user.svg",
       };
 }
 const profileReduder = (state: any, action: any) => {

@@ -58,9 +58,7 @@ function Board() {
 
           <Image
             className="rounded-full h-[40px] w-[40px] md:h-[60px] md:w-[60px] object-cover"
-            src={
-              stateProfile?.foto === "" ? "/cat-user.jpg" : stateProfile?.foto
-            }
+            src={stateProfile?.foto === "" ? "/user.svg" : stateProfile?.foto}
             width={60}
             height={60}
             alt=""
